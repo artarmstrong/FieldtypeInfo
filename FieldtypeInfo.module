@@ -3,7 +3,7 @@
 /**
  * Information Fieldtype
  *
- * This Fieldtype stores a list of values from which to choose via a <sinput type="radio"> input field (AKA "Radio").
+ * This Fieldtype stores the basic info entered and displays it.
  *
  * For documentation about the fields used in this class, please see:
  * /wire/core/Fieldtype.php
@@ -34,7 +34,8 @@ class FieldtypeInfo extends Fieldtype {
  */
 	public static $defaultOptionValues = array();
 
-	public static function getModuleInfo() {
+	public static function getModuleInfo()
+	{
 		return array(
 		'title' => 'Radio',
 		'version' => 100,
@@ -42,7 +43,8 @@ class FieldtypeInfo extends Fieldtype {
 		);
 	}
 
-	public function getInputfield(Page $page, Field $fields) {
+	public function getInputfield(Page $page, Field $fields)
+	{
 
 		$inputfield = $this->modules->get('InputfieldRadios');
 
@@ -70,16 +72,17 @@ class FieldtypeInfo extends Fieldtype {
 		return $inputfield;
 	}
 
-	public function getDatabaseSchema(Field $field) {
+	public function getDatabaseSchema(Field $field)
+	{
 		$schema = parent::getDatabaseSchema($field);
 		$schema['data'] = 'text NOT NULL';
 		$schema['keys']['data_exact'] = 'KEY `data_exact` (`data`(255))';
 		$schema['keys']['data'] = 'FULLTEXT KEY `data` (`data`)';
-
 		return $schema;
 	 }
 
-	 public function sanitizeValue(Page $page, Field $field, $value) {
+	 public function sanitizeValue(Page $page, Field $field, $value)
+	 {
 
 		// remove any leading/trailing whitespace
 		$value = trim($value);
@@ -92,7 +95,8 @@ class FieldtypeInfo extends Fieldtype {
 		return $value;
 	 }
 
-	 public function ___getConfigInputfields(Field $fields) {
+	 public function ___getConfigInputfields(Field $fields)
+	 {
 
 		$inputfields = parent::___getConfigInputfields($fields);
 
