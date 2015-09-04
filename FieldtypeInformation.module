@@ -21,7 +21,7 @@
  *
  */
 
-class FieldtypeInfo extends Fieldtype {
+class FieldtypeInformation extends Fieldtype {
 
 /**
  * The default options to load when adding a field of this Fieldtype
@@ -37,9 +37,9 @@ class FieldtypeInfo extends Fieldtype {
 	public static function getModuleInfo()
 	{
 		return array(
-		'title' => 'Radio',
+		'title' => 'Information Box',
 		'version' => 100,
-		'summary' => 'This Fieldtype stores a list of values from which to choose via a "radio" input field.'
+		'summary' => 'This Fieldtype stores basic information and displays it.'
 		);
 	}
 
